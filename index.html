@@ -4,11 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <title>AR con MindAR</title>
+
+    <!-- A-Frame -->
     <script src="https://cdn.jsdelivr.net/npm/aframe@1.5.0/dist/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+
+    <!-- MindAR (versión estable) -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.1/dist/mindar-image-aframe.prod.js"></script>
+
     <style>
-        body,
-        html {
+        body, html {
             margin: 0;
             overflow: hidden;
         }
@@ -16,16 +20,20 @@
 </head>
 
 <body>
-    <a-scene mindar-image="imageTargetSrc: ./mid_targets.mind;" vr-mode-ui="enabled: false"
-        device-orientation-permission-ui="enabled: false" embedded>
+    <a-scene 
+        mindar-image="imageTargetSrc: ./mid_targets.mind;" 
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: false"
+        color-space="sRGB"
+        renderer="colorManagement: true, physicallyCorrectLights: true"
+        embedded>
 
         <!-- Cámara AR -->
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <!-- CÍRCULO MORADO 3D -->
+        <!-- CÍRCULO MORADO -->
         <a-entity mindar-image-target="targetIndex: 0">
-       <a-circle radius="0.4" color="#7A00FF" position="0 0 0" rotation="-90 0 0"></a-circle>
-
+            <a-circle radius="0.4" color="#7A00FF" rotation="-90 0 0"></a-circle>
         </a-entity>
 
     </a-scene>
